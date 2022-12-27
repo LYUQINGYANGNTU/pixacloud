@@ -1,0 +1,335 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+        overflow: hidden;
+        background-color: #333;
+        }
+
+        .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .dropdown {
+        float: right;
+        overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+        font-size: 16px;  
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        }
+
+        .topnav a:hover, .dropdown:hover .dropbtn{
+        background-color: #ddd;
+        color: black;
+        }
+
+        .topnav a.active {
+        background-color: #afb8ba;
+        color: white;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        }
+
+      .dropdown-content a:hover {
+      background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content {
+      display: block;
+      }
+        </style>
+        </head>
+        <body>
+
+        <div class="topnav">
+        <a href="./index.html">Telepresence</a>
+        <a href="./php/systemlog.php">System Log</a>
+        <a class="active" href="./Robotmanagement.html">Robot Management</a>
+        <div class="dropdown">
+          <button class="dropbtn">Active Robot: Julee 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Julee</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="rmstyles.css"/>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+    </head>
+    <body>
+
+<!--
+            <div style="position:relative; left:500px; top:-280px">
+                <p id="rcorners1">
+                    <b>Goal Destination</b>
+                </p>
+            
+            <div style="position:relative; left:-30px; top:-630px">
+                <hr class="new1">
+            </div>
+            <div class="custom-select" style="width:25%; left:530px; top:-580px">
+              <select id="mySelect" >
+                <option value="point1">Point 1</option>
+                <option value="point2">Point 2</option>
+                <option value="point3">Point 3</option>
+                <option value="point4">Point 4</option>
+                <option value="point5">Point 5</option>
+              </select>
+              
+              </div>
+
+              <div style="position:relative; left:530px; top:-500px">
+                <button class="button" id="naviconfirm">Confirm</button>
+                </div>
+            </div>
+            //-->
+            
+<!--
+            <div style="position:relative; ">
+                <p id="rcorners1">
+                    <b>Path Editor</b>
+                </p>
+            
+            <div style="position:relative; ">
+                <hr class="new1">
+            </div>
+            
+            <div style="position:relative; ">
+                <div class="container">
+                  <div class="custom-select" style="width:65%; ">
+                    <select id="mySelect2" >
+                      <option value="path1">Path 1</option>
+                      <option value="path2">Path 2</option>
+                      <option value="path3">Path 3</option>
+                      <option value="path4">Path 4</option>
+                      <option value="path5">Path 5</option>
+                    </select>                   
+                  </div>
+      
+                  <div style="position:relative; ">
+                    <button class="button" id="pathconfirm" type="button">Confirm Path</button>
+                  </div>
+
+                <section style="position:relative; ">
+                  <select multiple="multiple" id="myMulti">
+                    <option>Point 1</option>
+                    <option>Point 2</option>
+                    <option>Point 3</option>
+                    <option>Point 4</option>        
+                  </select>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        //-->
+
+
+          <div style="position:relative; float: left;">
+                <p id="rcorners1">
+                    <b>Announcement Editor</b>
+                </p>
+          
+            
+            <div class="container2" style="margin-top: -70%;">
+                <form>
+                  <label for="fname">Script</label>
+                  <input type="text" id="scriptinput" placeholder="Edit your script here">
+                  <button class="button" id="scriptbtn" type="button">
+                    Update Script
+                  </button>
+
+                    <button class="button" type="reset" id="scriptreset">Reset</button>
+                  
+                </form>
+              
+            </div>
+          </div>
+
+
+<!--
+            <div style="position:relative; left:980px; top:-2655px">
+                <p id="rcorners1">
+                    <b>Device Status</b>
+                </p>
+            
+            <div style="position:relative; left:450px; top:-3005px">
+                <hr class="new1">
+            </div>
+            <div  style="position:relative; left:1000px; top:-2970px">
+                <table id="customers">
+                    <tr>
+                      <th>Device Name</th>
+                      <td>Robot 1</td>
+                    </tr>
+                    <tr>
+                      <th>Battery</th>
+                      <td>Unknown</td>
+                    </tr>
+                    <tr>
+                      <th>Status</th>
+                      <td>Unknown</td>
+                    </tr>
+                    <tr>
+                      <th>Location</th>
+                      <td>Unknown</td>
+                    </tr>
+                    
+                    
+                  </table>
+                </div>
+                </div>
+              //-->
+
+
+
+
+
+            <div style="position:relative; float: left; margin-left: 1%">
+                <p id="rcorners1">
+                    <b>Interaction Settings</b>
+                </p>
+            
+            <div  style="position:relative; margin-top: 10%; margin-left: 0%;">
+                <TABLE class="center" style="width:100%">
+                    <tr class="spaceUnder">
+                        <td>Chatbot</td>
+                        <td>
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                            <input type="checkbox" id="chatbotenable">
+                            <span class="slider round"></span>
+                            </label>
+                        </td>
+                      </tr>
+                      <tr class="spaceUnder">
+                        <td>Announcement Mode</td>
+                        <td>
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                            <input type="checkbox" id="announcementenable">
+                            <span class="slider round"></span>
+                            </label>
+                        </td>
+                      </tr>
+                      <tr class="spaceUnder">
+                        <td>Autopilot</td>
+                        <td>
+                          <!-- Rounded switch -->
+                          <label class="switch">
+                            <input type="checkbox" id="tourmode">
+                            <span class="slider round"></span>
+                            </label>
+                        </td>
+                      </tr>
+
+                      <tr class="spaceUnder">
+                        <td><button class="button" id="resumeautopilotbtn" type="button">
+                          Resume Autopilot
+                        </button>
+                      </td>
+                        <td>
+                          
+                        </td>
+                      </tr>
+                    
+                    </TABLE>
+                </div>
+              </div>
+
+                   
+        <div style="position:relative; float: left; margin-left: 1%">
+        <p id="rcorners1">
+            <b>Vision Management</b>
+        </p>
+        
+        <div  style="position:relative; margin-top: 10%; margin-left: 0%;">
+        <TABLE class="center" style="width:100%">
+            <tr class="spaceUnder">
+                <td>Kite Flying</td>
+                <td>
+                    
+                    <label class="switch">
+                    <input type="checkbox"  id="kiteflying">
+                    <span class="slider round"></span>
+                    </label>
+                </td>
+              </tr>
+              <tr class="spaceUnder">
+                <td>Faulty Lamps</td>
+                <td>
+                    
+                    <label class="switch">
+                    <input type="checkbox" id="faultylamps">
+                    <span class="slider round"></span>
+                    </label>
+                </td>
+              </tr>
+              <tr class="spaceUnder">
+                <td>Fishing</td>
+                <td>
+                    
+                    <label class="switch">
+                    <input type="checkbox" id="fishing">
+                    <span class="slider round"></span>
+                    </label>
+                </td>
+              </tr>
+            </TABLE>
+            </div>
+          </div>
+            
+
+
+            
+              
+
+        <!-- points to the bundle generated from client.js -->
+        <script src="./bundle3.js"></script>
+        <script src="./customselect.js"></script>
+        <script src="./select.js"></script>
+    </body>
+</html>
