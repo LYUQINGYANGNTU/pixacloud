@@ -54,11 +54,19 @@ initializeCallAgentButton.onclick = async () => {
         // Instantiate the identity client
         const identityClient = new CommunicationIdentityClient(connectionString);      
 
-        let identityResponse = await identityClient.createUser();
-        console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
+        let response =
+
+        {
+
+            communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000015-4825-c3e0-28c5-593a0d005738'
+
+        }
+
+ 
 
         // Issue an access token with the "voip" scope for an identity
-        let tokenResponse = await identityClient.getToken(identityResponse, ["chat","voip"]);
+
+        let tokenResponse = await identityClient.getToken(response, ["chat","voip"]);
 
         // Get the token and its expiration date from the response
         const { token, expiresOn } = tokenResponse;
@@ -106,7 +114,7 @@ startCallButton.onclick = async () => {
     try {
         const localVideoStream = await createLocalVideoStream();
         const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
-        call = callAgent.startCall([{ communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000014-8487-22a2-9a33-373a0d00d520' }], { videoOptions });
+        call = callAgent.startCall([{ communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000013-98d4-fecc-28c5-593a0d003da2' }], { videoOptions });
         // Subscribe to the call's properties and events.
         subscribeToCall(call);
     } catch (error) {
@@ -121,6 +129,9 @@ startCallButton.onclick = async () => {
  * You can pass the local video stream which you want to use to accept the call with.
  */
 acceptCallButton.onclick = async () => {
+
+    notification.classList.remove("notification-show");
+
     try {
         const localVideoStream = await createLocalVideoStream();
         const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
@@ -383,18 +394,14 @@ hangUpCallButton.addEventListener("click", async () => {
     await call.hangUp();
 });
 
-
-
-
-deleteBtn.addEventListener("click", () => {
-    notification.classList.add("notification-show");
-  });
   
   closeBtn.addEventListener("click", () => {
     notification.classList.remove("notification-show");
+    incomingCall.reject();
   });
   
   acceptBtn.onclick = async () => {
+    notification.classList.remove("notification-show");
     try {
         const localVideoStream = await createLocalVideoStream();
         const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
@@ -404,5 +411,4 @@ deleteBtn.addEventListener("click", () => {
     } catch (error) {
         console.error(error);
     }
-    notification.classList.remove("notification-show");
 }
