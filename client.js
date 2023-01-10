@@ -41,6 +41,8 @@ const notification = document.getElementById("notification");
 const closeBtn = document.getElementById("close");
 const acceptBtn = document.getElementById("accept");
 
+var audioplay = document.getElementById("myAudio");
+
 /**
  * Using the CallClient, initialize a CallAgent instance with a CommunicationUserCredential which will enable us to make outgoing calls and receive incoming calls. 
  * You can then use the CallClient.getDeviceManager() API instance to get the DeviceManager.
@@ -90,6 +92,11 @@ initializeCallAgentButton.onclick = async () => {
                 startCallButton.disabled = true;
                 
                 notification.classList.add("notification-show");
+
+                audioplay.loop = true;
+                audioplay.load();
+                audioplay.play();
+
             } catch (error) {
                 console.error(error);
             }
@@ -129,6 +136,9 @@ startCallButton.onclick = async () => {
  * You can pass the local video stream which you want to use to accept the call with.
  */
 acceptCallButton.onclick = async () => {
+
+    audioplay.loop = false;
+    audioplay.load();
 
     notification.classList.remove("notification-show");
 
@@ -396,19 +406,10 @@ hangUpCallButton.addEventListener("click", async () => {
 
   
   closeBtn.addEventListener("click", () => {
+
+    audioplay.loop = false;
+    audioplay.load();
+    
     notification.classList.remove("notification-show");
     incomingCall.reject();
   });
-  
-  acceptBtn.onclick = async () => {
-    notification.classList.remove("notification-show");
-    try {
-        const localVideoStream = await createLocalVideoStream();
-        const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
-        call = await incomingCall.accept({ videoOptions });
-        // Subscribe to the call's properties and events.
-        subscribeToCall(call);
-    } catch (error) {
-        console.error(error);
-    }
-}
