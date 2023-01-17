@@ -1,19 +1,17 @@
 <?php
 
-    $serverName = "visiondatabaseserver.database.windows.net"; // update me
+    $serverName = "pixadatabse.database.windows.net"; // update me
     $connectionOptions = array(
-        "Database" => "visiondatabase", // update me
-        "Uid" => "visiondatabase", // update me
-        "PWD" => "QWE666qwe!" // update me
+        "Database" => "PIXA", // update me
+        "Uid" => "pixadatabase", // update me
+        "PWD" => "QWE123456qwe!" // update me
     );
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
     $tsql= "SELECT TOP (1000) [IncidentType]
     ,[Date]
     ,[Time]
-    ,[Evidence]
-    ,[Location]
-FROM [dbo].[VisionTable]";?>
+FROM [dbo].[LogTable]";?>
 
 <!-- index.html -->
 <!DOCTYPE html>
@@ -119,8 +117,8 @@ FROM [dbo].[VisionTable]";?>
               <th>Incident Type</th>
               <th>Date</th>
               <th>Time Stamp</th>
-              <th>Evidence</th>
-              <th>Location</th>
+              <!--<th>Evidence</th>-->
+              <!--<th>Location</th>-->
             </tr>
             <?php 
     $getResults= sqlsrv_query($conn, $tsql);
@@ -131,8 +129,8 @@ FROM [dbo].[VisionTable]";?>
       echo "<td>" . $row['IncidentType'] . "</td>";
       echo "<td>" . $row['Date'] ."</td>";
       echo "<td>" . $row['Time'] ."</td>";    
-      echo "<td>" . '<img src="data:image/jpg;base64,'.base64_encode($row['Evidence']).'" style="width:600px;height:400px;">' ."</td>";
-      echo "<td>" . $row['Location'] ."</td>";
+      //echo "<td>" . '<img src="data:image/jpg;base64,'.base64_encode($row['Evidence']).'" style="width:600px;height:400px;">' ."</td>";
+      //echo "<td>" . $row['Location'] ."</td>";
       echo "</tr>";
     }
     sqlsrv_free_stmt($getResults);?>
