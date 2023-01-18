@@ -121,7 +121,7 @@ startCallButton.onclick = async () => {
     try {
         const localVideoStream = await createLocalVideoStream();
         const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
-        call = callAgent.startCall([{ communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000013-98d4-fecc-28c5-593a0d003da2' }], { videoOptions });
+        call = callAgent.startCall([{ communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000016-5fe7-0472-6a0b-343a0d008872' }], { videoOptions });
         // Subscribe to the call's properties and events.
         subscribeToCall(call);
     } catch (error) {

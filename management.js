@@ -23,7 +23,7 @@ var Client = require('azure-iothub').Client;
 
 var Message = require('azure-iot-common').Message;
 
-var deviceId = 'robot1';
+var deviceId = 'pixa';
 
 // Connect to the service-side endpoint on your IoT hub.
 var client = Client.fromConnectionString(connectionString);
