@@ -98,11 +98,11 @@ FROM [dbo].[LogTable]";?>
         <a class="active" href="./php/systemlog.php">System Log</a>
         <a href="../Robotmanagement.html">Robot Management</a>
         <div class="dropdown">
-          <button class="dropbtn">Active Robot: Julee 
+          <button class="dropbtn">Active Robot: PIXA 
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="#">Julee</a>
+            <a href="#">PIXA</a>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a>
           </div>
