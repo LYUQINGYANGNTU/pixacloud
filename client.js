@@ -61,7 +61,7 @@ initializeCallAgentButton.onclick = async () => {
         {
 
             communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000016-5e66-2372-f40f-343a0d005bcb'
-            //'8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000015-4825-c3e0-28c5-593a0d005738'
+            //'8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000019-6ea8-ff17-1000-343a0d008ba7'
         }
 
  
@@ -121,7 +121,7 @@ startCallButton.onclick = async () => {
     try {
         const localVideoStream = await createLocalVideoStream();
         const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
-        call = callAgent.startCall([{ communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000016-5fe7-0472-6a0b-343a0d008872' }], { videoOptions });
+        call = callAgent.startCall([{ communicationUserId: '8:acs:5695483f-da57-4fb7-b318-08b7d4913f12_00000019-632d-beeb-ac00-343a0d00ccb8' }], { videoOptions });
         // Subscribe to the call's properties and events.
         subscribeToCall(call);
     } catch (error) {
