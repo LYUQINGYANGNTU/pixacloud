@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/1859ead6-ce77-4851-8dbc-304b451f28d3/microsoft.web/sites/subscriptions/1859ead6-ce77-4851-8dbc-304b451f28d3/resourceGroups/RobotCloud_group/providers/Microsoft.Web/sites/RobotCloud",
+    "appService.deploySubpath": "."
+}

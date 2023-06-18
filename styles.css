@@ -1,0 +1,678 @@
+/**
+ * CSS for styling the loading spinner over the remote video stream
+ */
+ *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ .remote-video-container {
+  position: relative;
+}
+.loading-spinner {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #ca5010;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+/* button layout  Direction Button */
+.directional-buttons {
+  /* Define the size of the grid */
+  /* Other things rely on this! Change at your own peril! */
+  width: 16rem;
+  height: 16rem;
+  /* display the buttons in a grid */
+  display: grid;
+  /* leave a little gap between columns/rows */
+  grid-gap: 0.5rem;
+  /* define a 3 x 3 grid with middle column/row larger */
+  grid-template-columns: 45fr 60fr 45fr;
+  grid-template-rows: 45fr 60fr 45fr;
+  /* name the cells in the grid */
+  grid-template-areas: "....  up  ....."
+                       "left  ..  right"
+                       ".... down .....";    
+}
+
+/* hides the button text */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* base button */
+.direction-button {
+  /* the button colours */
+  color: rgb(55, 50, 50);
+  /* since there's no text, we can use the color value for the background */
+  background: currentcolor;
+  /* clears default button styles */
+  border: none;
+  /* makes sure the triangles are moved relative to the button */
+  position: relative;
+}
+
+/* the overlapping outside triangle 
+ * actually, it's just a rotated square
+ */
+.direction-button:before {
+  /* make the triangle display */
+  display: block;
+  content: "";
+  /* make the triangle able to be moved around relative to the button */
+  position: absolute;
+  /* approximately makes the diagonal the right size */
+  width: 4.25rem;
+  height: 4.25rem;
+  /* rotate the square (to look like a triangle) */
+  transform: rotate(45deg);
+  /* use the current color value for the background to match the button */
+  background: currentcolor;
+}
+
+/* the inner direction triangle */
+.direction-button:after {
+  /* make the triangle display */
+  display: block;
+  content: "";
+  /* make the triangle able to be moved around relative to the button */
+  position: absolute;
+  /* same border-based triangle trick as before */
+  border: 2rem solid transparent;
+  /* using color value for border-color to make it easier to change */
+  color: rgba(255, 250, 250, 0.6);
+}
+
+/* when the button is hovered */
+.direction-button:hover {
+  /* make the button a different color */
+  color: rgb(85,55,55);
+}
+
+/* when the button is pressed */
+.direction-button:active:after {
+  /* make the inner triangle a different color! */
+  color: rgb(255, 152, 152);
+}
+
+/* individual button styles */
+.up {
+  /* puts the button in the named grid cell */
+  grid-area: up;
+  /* only curves the outer corners */
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.up:before {
+  /* center the overlapping triangle horizontally */
+  left: calc(50% - 2.125rem);
+  /* position it so it overlaps just right */
+  bottom: -2.125rem;
+}
+.up:after {
+  /* do the border-based triangle trick */
+  border-bottom-color: currentcolor;
+  /* center inner triangle horizontally */
+  left: calc(50% - 2rem);
+  /* position it just right */
+  top: -1rem;
+}
+
+.left {
+  /* puts the button in the named grid cell */
+  grid-area: left;
+  /* only curves the outer corners */
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+.left:before {
+  /* position it so it overlaps just right */
+  right: -2.125rem;
+  /* center the overlapping triangle vertically */
+  top: calc(50% - 2.125rem);
+}
+.left:after {
+  /* do the border-based triangle trick */
+  border-right-color: currentcolor;
+  /* center inner triangle vertically */
+  top: calc(50% - 2rem);
+  /* position it just right */
+  left: -1rem;
+}
+
+.right {
+  /* puts the button in the named grid cell */
+  grid-area: right;
+  /* only curves the outer corners */
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.right:before {
+  /* position it so it overlaps just right */
+  left: -2.125rem;
+  /* center the overlapping triangle vertically */
+  top: calc(50% - 2.125rem);
+}
+.right:after {
+  /* do the border-based triangle trick */
+  border-left-color: currentcolor;
+  /* center inner triangle vertically */
+  top: calc(50% - 2rem);
+  /* position it just right */
+  right: -1rem;
+}
+
+.down {
+  /* puts the button in the named grid cell */
+  grid-area: down;
+  /* only curves the outer corners */
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.down:before {
+  /* center the overlapping triangle horizontally */
+  left: calc(50% - 2.125rem);
+  /* position it so it overlaps just right */
+  top: -2.125rem;
+}
+.down:after {
+  /* do the border-based triangle trick */
+  border-top-color: currentcolor;
+  /* center inner triangle horizontally */
+  left: calc(50% - 2rem);
+  /* position it just right */
+  bottom: -1rem;
+}
+
+
+
+
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  left:1220px;
+top:230px;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: rgb(98, 101, 105);
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: rgb(98, 101, 105);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  background-color: #a19e9e;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+/**
+ * CSS for styling the loading spinner over the remote video stream
+ */
+ .remote-video-container {
+    position: relative;
+}
+.loading-spinner {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #ca5010;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+/* button layout  Direction Button */
+.directional-buttons {
+    /* Define the size of the grid */
+    /* Other things rely on this! Change at your own peril! */
+    width: 16rem;
+    height: 16rem;
+    /* display the buttons in a grid */
+    display: grid;
+    /* leave a little gap between columns/rows */
+    grid-gap: 0.5rem;
+    /* define a 3 x 3 grid with middle column/row larger */
+    grid-template-columns: 45fr 60fr 45fr;
+    grid-template-rows: 45fr 60fr 45fr;
+    /* name the cells in the grid */
+    grid-template-areas: "....  up  ....."
+                         "left  ..  right"
+                         ".... down .....";    
+  }
+  
+  /* hides the button text */
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+  }
+  
+  /* base button */
+  .direction-button {
+    /* the button colours */
+    color: rgb(55, 50, 50);
+    /* since there's no text, we can use the color value for the background */
+    background: currentcolor;
+    /* clears default button styles */
+    border: none;
+    /* makes sure the triangles are moved relative to the button */
+    position: relative;
+  }
+  
+  /* the overlapping outside triangle 
+   * actually, it's just a rotated square
+   */
+  .direction-button:before {
+    /* make the triangle display */
+    display: block;
+    content: "";
+    /* make the triangle able to be moved around relative to the button */
+    position: absolute;
+    /* approximately makes the diagonal the right size */
+    width: 4.25rem;
+    height: 4.25rem;
+    /* rotate the square (to look like a triangle) */
+    transform: rotate(45deg);
+    /* use the current color value for the background to match the button */
+    background: currentcolor;
+  }
+  
+  /* the inner direction triangle */
+  .direction-button:after {
+    /* make the triangle display */
+    display: block;
+    content: "";
+    /* make the triangle able to be moved around relative to the button */
+    position: absolute;
+    /* same border-based triangle trick as before */
+    border: 2rem solid transparent;
+    /* using color value for border-color to make it easier to change */
+    color: rgba(255, 250, 250, 0.6);
+  }
+  
+  /* when the button is hovered */
+  .direction-button:hover {
+    /* make the button a different color */
+    color: rgb(85,55,55);
+  }
+  
+  /* when the button is pressed */
+  .direction-button:active:after {
+    /* make the inner triangle a different color! */
+    color: rgb(255, 152, 152);
+  }
+  
+  /* individual button styles */
+  .up {
+    /* puts the button in the named grid cell */
+    grid-area: up;
+    /* only curves the outer corners */
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  .up:before {
+    /* center the overlapping triangle horizontally */
+    left: calc(50% - 2.125rem);
+    /* position it so it overlaps just right */
+    bottom: -2.125rem;
+  }
+  .up:after {
+    /* do the border-based triangle trick */
+    border-bottom-color: currentcolor;
+    /* center inner triangle horizontally */
+    left: calc(50% - 2rem);
+    /* position it just right */
+    top: -1rem;
+  }
+  
+  .left {
+    /* puts the button in the named grid cell */
+    grid-area: left;
+    /* only curves the outer corners */
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+  .left:before {
+    /* position it so it overlaps just right */
+    right: -2.125rem;
+    /* center the overlapping triangle vertically */
+    top: calc(50% - 2.125rem);
+  }
+  .left:after {
+    /* do the border-based triangle trick */
+    border-right-color: currentcolor;
+    /* center inner triangle vertically */
+    top: calc(50% - 2rem);
+    /* position it just right */
+    left: -1rem;
+  }
+  
+  .right {
+    /* puts the button in the named grid cell */
+    grid-area: right;
+    /* only curves the outer corners */
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  .right:before {
+    /* position it so it overlaps just right */
+    left: -2.125rem;
+    /* center the overlapping triangle vertically */
+    top: calc(50% - 2.125rem);
+  }
+  .right:after {
+    /* do the border-based triangle trick */
+    border-left-color: currentcolor;
+    /* center inner triangle vertically */
+    top: calc(50% - 2rem);
+    /* position it just right */
+    right: -1rem;
+  }
+  
+  .down {
+    /* puts the button in the named grid cell */
+    grid-area: down;
+    /* only curves the outer corners */
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+  .down:before {
+    /* center the overlapping triangle horizontally */
+    left: calc(50% - 2.125rem);
+    /* position it so it overlaps just right */
+    top: -2.125rem;
+  }
+  .down:after {
+    /* do the border-based triangle trick */
+    border-top-color: currentcolor;
+    /* center inner triangle horizontally */
+    left: calc(50% - 2rem);
+    /* position it just right */
+    bottom: -1rem;
+  }
+
+
+
+
+
+  /* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    left:1220px;
+	top:230px;
+  }
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element: */
+  }
+  
+  .select-selected {
+    background-color: rgb(98, 101, 105);
+  }
+  
+  /* Style the arrow inside the select element: */
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  
+  /* Point the arrow upwards when the select box is open (active): */
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  
+  /* style the items (options), including the selected item: */
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+  
+  /* Style items (options): */
+  .select-items {
+    position: absolute;
+    background-color: rgb(98, 101, 105);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  /* Hide the items when the select box is closed: */
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .button {
+    background-color: #a19e9e;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background-color: #0e48fe;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: #eef1f6;
+    padding: 0.5rem;
+  }
+  .btn-primary svg {
+    width: 1rem;
+    fill: #eef1f6;
+  }
+  .btn-secondary {
+    background-color: transparent;
+    font-weight: bold;
+    color: #0e48fe;
+  }
+  .notification {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    background-color: #cad5f3c3;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .notification__warning {
+    width: 1.5rem;
+    margin-left: 1rem;
+    fill: #0e48fe;
+  }
+  .notification__close {
+    background-color: #e90d0d;
+    padding: 1rem;
+    display: flex;
+    cursor: pointer;
+  }
+  .notification__accept {
+    background-color: #0bec6c;
+    padding: 1rem;
+    display: flex;
+    cursor: pointer;
+  }
+  .notification__close svg {
+    width: 1rem;
+    fill: #0e48fe
+  }
+  .notification-show {
+    animation: warning 400ms ease-in-out forwards;
+    display: flex;
+  }
+  @keyframes warning {
+    0% {
+      opacity: 0;
+      top: 2rem;
+   }
+    5% {
+      opacity: 0;
+   }
+    100% {
+      opacity: 1;
+      top: 4rem;
+   }
+  }
+
+
+  .slidecontainer {
+    width: 20%;
+  }
+  
+  .slider {
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #a19e9e;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #a19e9e;
+    cursor: pointer;
+  }
+
+  
